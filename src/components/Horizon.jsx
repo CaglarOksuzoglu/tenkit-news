@@ -4,6 +4,7 @@ import AppLevelContext from '../context/AppLevelContext'
 
 const Horizon = () => {
   const { filters, setFilters } = useContext(AppLevelContext)
+  const { darkmode, setDarkmode } = useContext(AppLevelContext)
   return (
     <div className='horizon'>
       <select
@@ -23,6 +24,12 @@ const Horizon = () => {
         <option value='3'>Sol</option>
         <option value='1'>Aşırı Sol</option>
       </select>
+      Click here if you want to switch the dark mode
+      <input  
+        type="checkbox"
+        value="check"
+        onChange={e => setDarkmode(value => !value)}
+        />
     </div>
   )
 }

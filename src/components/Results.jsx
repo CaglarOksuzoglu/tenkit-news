@@ -6,7 +6,7 @@ import { useContext } from 'react'
 import AppLevelContext from '../context/AppLevelContext'
 
 const Results = () => {
-  const { filters } = useContext(AppLevelContext)
+  const { filters, darkmode } = useContext(AppLevelContext)
   const [users, setUsers] = useState([])
   const [selectedNews, setSelectedNews] = useState([])
   const [cbQuery, setcbQuery] = useState()
@@ -70,11 +70,10 @@ const Results = () => {
         </label>
         <button onClick={handleClick}>SEARCH</button>
       </div>
-      <div>
+      <div className={`newsList ${darkmode ? "darkactive" : "darkinactive"}`}>
         {users.length > 0 && (
           <ul className={styles.cardContainer}>
             {selectedNews.map((user) => (
-              <div className={styles.eachCard}>
                 <li key={user._id}>
                   <br />
                   {user.media}
@@ -88,7 +87,6 @@ const Results = () => {
                   {user.rank} <br />
                   {user.link} <br />
                 </li>
-              </div>
             ))}
           </ul>
         )}
